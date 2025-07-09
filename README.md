@@ -1,5 +1,5 @@
 # MCP Java SDK
-[![Build Status](https://github.com/modelcontextprotocol/java-sdk/actions/workflows/publish-snapshot.yml/badge.svg)](https://github.com/modelcontextprotocol/java-sdk/actions/workflows/publish-snapshot.yml)
+[![Build Status](https://github.com/HubSpot/java-sdk/actions/workflows/publish-snapshot.yml/badge.svg)](https://github.com/HubSpot/java-sdk/actions/workflows/publish-snapshot.yml)
 
 A set of projects that provide Java SDK integration for the [Model Context Protocol](https://modelcontextprotocol.org/docs/concepts/architecture). 
 This SDK enables Java applications to interact with AI models and tools through a standardized interface, supporting both synchronous and asynchronous communication patterns.
@@ -46,9 +46,9 @@ Please follow the [Contributing Guidelines](CONTRIBUTING.md).
 
 ## Links
 
-- [GitHub Repository](https://github.com/modelcontextprotocol/java-sdk)
-- [Issue Tracker](https://github.com/modelcontextprotocol/java-sdk/issues)
-- [CI/CD](https://github.com/modelcontextprotocol/java-sdk/actions)
+- [GitHub Repository](https://github.com/HubSpot/java-sdk)
+- [Issue Tracker](https://github.com/HubSpot/java-sdk/issues)
+- [CI/CD](https://github.com/HubSpot/java-sdk/actions)
 
 ## License
 
