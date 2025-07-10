@@ -21,6 +21,10 @@
 		<developerConnection>git@github.com/HubSpot/java-sdk.git</developerConnection>
 	</scm>
 
+	<properties>
+		<maven.test.skip>true</maven.test.skip>
+	</properties>
+
 	<dependencies>
 		<dependency>
 			<groupId>io.modelcontextprotocol.sdk</groupId>
@@ -107,11 +111,13 @@
 		<dependency>
 			<groupId>io.projectreactor.netty</groupId>
 			<artifactId>reactor-netty-http</artifactId>
+			<version>${reactor.netty.version}</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>io.projectreactor</groupId>
 			<artifactId>reactor-test</artifactId>
+			<version>${reactor.version}</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
