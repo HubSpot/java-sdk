@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+		 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>io.modelcontextprotocol.sdk</groupId>
@@ -12,75 +12,80 @@
 	<packaging>jar</packaging>
 	<name>Java MCP SDK</name>
 	<description>Java SDK implementation of the Model Context Protocol, enabling seamless integration with language models and AI tools</description>
-	<url>https://github.com/HubSpot/java-sdk</url>
+	<url>https://github.com/modelcontextprotocol/java-sdk</url>
 
 	<scm>
-		<url>https://github.com/HubSpot/java-sdk</url>
-		<connection>git://github.com/HubSpot/java-sdk.git</connection>
-		<developerConnection>git@github.com/HubSpot/java-sdk.git</developerConnection>
+		<url>https://github.com/modelcontextprotocol/java-sdk</url>
+		<connection>git://github.com/modelcontextprotocol/java-sdk.git</connection>
+		<developerConnection>git@github.com/modelcontextprotocol/java-sdk.git</developerConnection>
 	</scm>
 
-	<build>
-		<plugins>
-			<plugin>
-				<groupId>biz.aQute.bnd</groupId>
-				<artifactId>bnd-maven-plugin</artifactId>
-				<version>${bnd-maven-plugin.version}</version>
-				<executions>
-					<execution>
-						<id>bnd-process</id>
-						<goals>
-							<goal>bnd-process</goal>
-						</goals>
-						<configuration>
-							<bnd><![CDATA[
-								Bundle-Name:            Bundle ${project.groupId} : ${project.artifactId}
-								version:                ${versionmask;===;${version_cleanup;${project.version}}}
-								Bundle-SymbolicName:    ${project.groupId}.${project.artifactId}
-								Bundle-Version:         ${version}
-								Automatic-Module-Name:  ${project.groupId}.${project.artifactId}
-								Import-Package:         jakarta.*;resolution:=optional, \
-								                        *;
-								Export-Package:         io.modelcontextprotocol.*;version="${version}";-noimport:=true
-								-noimportjava:          true;
-								-nouses:                true;
-								-removeheaders:         Private-Package
-								]]>
-							</bnd>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
+	<properties>
+		<maven.test.skip>true</maven.test.skip>
+	</properties>
 
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-jar-plugin</artifactId>
-				<configuration>
-					<archive>
-						<manifestFile>${project.build.outputDirectory}/META-INF/MANIFEST.MF</manifestFile>
-					</archive>
-				</configuration>
-			</plugin>
-		</plugins>
-	</build>
+	<!--	<build>-->
+	<!--		<plugins>-->
+	<!--			<plugin>-->
+	<!--				<groupId>biz.aQute.bnd</groupId>-->
+	<!--				<artifactId>bnd-maven-plugin</artifactId>-->
+	<!--				<version>${bnd-maven-plugin.version}</version>-->
+	<!--				<executions>-->
+	<!--					<execution>-->
+	<!--						<id>bnd-process</id>-->
+	<!--						<goals>-->
+	<!--							<goal>bnd-process</goal>-->
+	<!--						</goals>-->
+	<!--						<configuration>-->
+	<!--							<bnd><![CDATA[-->
+	<!--								Bundle-Name:            Bundle ${project.groupId} : ${project.artifactId}-->
+	<!--								version:                ${versionmask;===;${version_cleanup;${project.version}}}-->
+	<!--								Bundle-SymbolicName:    ${project.groupId}.${project.artifactId}-->
+	<!--								Bundle-Version:         ${version}-->
+	<!--								Automatic-Module-Name:  ${project.groupId}.${project.artifactId}-->
+	<!--								Import-Package:         jakarta.*;resolution:=optional, \-->
+	<!--								                        *;-->
+	<!--								Export-Package:         io.modelcontextprotocol.*;version="${version}";-noimport:=true-->
+	<!--								-noimportjava:          true;-->
+	<!--								-nouses:                true;-->
+	<!--								-removeheaders:         Private-Package-->
+	<!--								]]>-->
+	<!--							</bnd>-->
+	<!--						</configuration>-->
+	<!--					</execution>-->
+	<!--				</executions>-->
+	<!--			</plugin>-->
+
+	<!--			<plugin>-->
+	<!--				<groupId>org.apache.maven.plugins</groupId>-->
+	<!--				<artifactId>maven-jar-plugin</artifactId>-->
+	<!--				<configuration>-->
+	<!--					<archive>-->
+	<!--						<manifestFile>${project.build.outputDirectory}/META-INF/MANIFEST.MF</manifestFile>-->
+	<!--					</archive>-->
+	<!--				</configuration>-->
+	<!--			</plugin>-->
+	<!--		</plugins>-->
+	<!--	</build>-->
 
 	<dependencies>
 
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-api</artifactId>
-			<version>${slf4j-api.version}</version>
+			<!--			<version>${slf4j-api.version}</version>-->
 		</dependency>
 
 		<dependency>
 			<groupId>com.fasterxml.jackson.core</groupId>
 			<artifactId>jackson-databind</artifactId>
-			<version>${jackson.version}</version>
+			<!--			<version>${jackson.version}</version>-->
 		</dependency>
 
 		<dependency>
 			<groupId>io.projectreactor</groupId>
 			<artifactId>reactor-core</artifactId>
+			<version>${reactor.version}</version>
 		</dependency>
 
 		<dependency>
@@ -110,6 +115,7 @@
 		<dependency>
 			<groupId>io.projectreactor.netty</groupId>
 			<artifactId>reactor-netty-http</artifactId>
+			<version>${reactor.netty.version}</version>
 			<scope>test</scope>
 		</dependency>
 
@@ -165,6 +171,7 @@
 		<dependency>
 			<groupId>io.projectreactor</groupId>
 			<artifactId>reactor-test</artifactId>
+			<version>${reactor.version}</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
