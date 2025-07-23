@@ -59,7 +59,9 @@ class HttpClientSseClientTransportTests {
 		private Sinks.Many<ServerSentEvent<String>> events = Sinks.many().unicast().onBackpressureBuffer();
 
 		public TestHttpClientSseClientTransport(final String baseUri) {
-			super(HttpClient.newHttpClient(), HttpRequest.newBuilder(), baseUri, "/sse", new ObjectMapper());
+			super(HttpClient.newBuilder().version(HttpClient.Version.HTTP_1_1).build(),
+					HttpRequest.newBuilder().header("Content-Type", "application/json"), baseUri, "/sse",
+					new ObjectMapper());
 		}
 
 		public int getInboundMessageCount() {
@@ -101,6 +103,16 @@ class HttpClientSseClientTransportTests {
 
 	void cleanup() {
 		container.stop();
+	}
+
+	@Test
+	void testErrorOnBogusMessage() {
+		// bogus message
+		JSONRPCRequest bogusMessage = new JSONRPCRequest(null, null, "test-id", Map.of("key", "value"));
+
+		StepVerifier.create(transport.sendMessage(bogusMessage))
+			.verifyErrorMessage(
+					"Sending message failed with a non-OK HTTP code: 400 - Invalid message: {\"id\":\"test-id\",\"params\":{\"key\":\"value\"}}");
 	}
 
 	@Test
