@@ -24,6 +24,10 @@
 		<developerConnection>git@github.com/modelcontextprotocol/java-sdk.git</developerConnection>
 	</scm>
 
+    <properties>
+        <maven.test.skip>true</maven.test.skip>
+    </properties>
+
     <dependencyManagement>
         <dependencies>
             <!-- Core MCP -->
